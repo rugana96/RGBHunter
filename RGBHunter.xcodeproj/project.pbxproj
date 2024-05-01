@@ -8,17 +8,41 @@
 
 /* Begin PBXBuildFile section */
 		3206856C2B389444005BBED6 /* RGBHunterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3206856B2B389444005BBED6 /* RGBHunterApp.swift */; };
-		3206856E2B389444005BBED6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3206856D2B389444005BBED6 /* ContentView.swift */; };
+		3206856E2B389444005BBED6 /* RGBGuessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3206856D2B389444005BBED6 /* RGBGuessView.swift */; };
 		320685702B389446005BBED6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3206856F2B389446005BBED6 /* Assets.xcassets */; };
 		320685732B389446005BBED6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 320685722B389446005BBED6 /* Preview Assets.xcassets */; };
+		3206857A2B389481005BBED6 /* ChooseGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320685792B389481005BBED6 /* ChooseGameView.swift */; };
+		3206857D2B3B3306005BBED6 /* GuessDifficultyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3206857C2B3B3306005BBED6 /* GuessDifficultyView.swift */; };
+		3206857F2B3B3320005BBED6 /* OtherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3206857E2B3B3320005BBED6 /* OtherView.swift */; };
+		320685812B3B3342005BBED6 /* NoAnimationButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320685802B3B3342005BBED6 /* NoAnimationButtonStyle.swift */; };
+		320685842B3B3390005BBED6 /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320685832B3B3390005BBED6 /* BackButton.swift */; };
+		320685862B3B33C0005BBED6 /* MenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320685852B3B33C0005BBED6 /* MenuButton.swift */; };
+		320685882B3B3422005BBED6 /* RGBGuessView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320685872B3B3422005BBED6 /* RGBGuessView+ViewModel.swift */; };
+		3206858A2B3B3469005BBED6 /* Difficulty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320685892B3B3469005BBED6 /* Difficulty.swift */; };
+		3206858C2B3B3477005BBED6 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3206858B2B3B3477005BBED6 /* Game.swift */; };
+		3206858E2B3B3550005BBED6 /* Double+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3206858D2B3B3550005BBED6 /* Double+Extensions.swift */; };
+		32A5BB292BE29D3D00864723 /* InfoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A5BB282BE29D3D00864723 /* InfoButton.swift */; };
+		32A5BB2B2BE29D5700864723 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A5BB2A2BE29D5700864723 /* InfoView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		320685682B389444005BBED6 /* RGBHunter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RGBHunter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3206856B2B389444005BBED6 /* RGBHunterApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RGBHunterApp.swift; sourceTree = "<group>"; };
-		3206856D2B389444005BBED6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		3206856D2B389444005BBED6 /* RGBGuessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RGBGuessView.swift; sourceTree = "<group>"; };
 		3206856F2B389446005BBED6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		320685722B389446005BBED6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		320685792B389481005BBED6 /* ChooseGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseGameView.swift; sourceTree = "<group>"; };
+		3206857C2B3B3306005BBED6 /* GuessDifficultyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuessDifficultyView.swift; sourceTree = "<group>"; };
+		3206857E2B3B3320005BBED6 /* OtherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherView.swift; sourceTree = "<group>"; };
+		320685802B3B3342005BBED6 /* NoAnimationButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoAnimationButtonStyle.swift; sourceTree = "<group>"; };
+		320685832B3B3390005BBED6 /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
+		320685852B3B33C0005BBED6 /* MenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuButton.swift; sourceTree = "<group>"; };
+		320685872B3B3422005BBED6 /* RGBGuessView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RGBGuessView+ViewModel.swift"; sourceTree = "<group>"; };
+		320685892B3B3469005BBED6 /* Difficulty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Difficulty.swift; sourceTree = "<group>"; };
+		3206858B2B3B3477005BBED6 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		3206858D2B3B3550005BBED6 /* Double+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extensions.swift"; sourceTree = "<group>"; };
+		32A5BB282BE29D3D00864723 /* InfoButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoButton.swift; sourceTree = "<group>"; };
+		32A5BB2A2BE29D5700864723 /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,10 +75,14 @@
 		3206856A2B389444005BBED6 /* RGBHunter */ = {
 			isa = PBXGroup;
 			children = (
+				320685822B3B3360005BBED6 /* View */,
 				3206856B2B389444005BBED6 /* RGBHunterApp.swift */,
-				3206856D2B389444005BBED6 /* ContentView.swift */,
 				3206856F2B389446005BBED6 /* Assets.xcassets */,
 				320685712B389446005BBED6 /* Preview Content */,
+				320685872B3B3422005BBED6 /* RGBGuessView+ViewModel.swift */,
+				320685892B3B3469005BBED6 /* Difficulty.swift */,
+				3206858B2B3B3477005BBED6 /* Game.swift */,
+				3206858D2B3B3550005BBED6 /* Double+Extensions.swift */,
 			);
 			path = RGBHunter;
 			sourceTree = "<group>";
@@ -65,6 +93,22 @@
 				320685722B389446005BBED6 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		320685822B3B3360005BBED6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				320685792B389481005BBED6 /* ChooseGameView.swift */,
+				3206856D2B389444005BBED6 /* RGBGuessView.swift */,
+				3206857E2B3B3320005BBED6 /* OtherView.swift */,
+				3206857C2B3B3306005BBED6 /* GuessDifficultyView.swift */,
+				320685802B3B3342005BBED6 /* NoAnimationButtonStyle.swift */,
+				320685832B3B3390005BBED6 /* BackButton.swift */,
+				320685852B3B33C0005BBED6 /* MenuButton.swift */,
+				32A5BB282BE29D3D00864723 /* InfoButton.swift */,
+				32A5BB2A2BE29D5700864723 /* InfoView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,8 +181,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3206856E2B389444005BBED6 /* ContentView.swift in Sources */,
+				3206858E2B3B3550005BBED6 /* Double+Extensions.swift in Sources */,
+				320685882B3B3422005BBED6 /* RGBGuessView+ViewModel.swift in Sources */,
+				3206856E2B389444005BBED6 /* RGBGuessView.swift in Sources */,
+				3206858A2B3B3469005BBED6 /* Difficulty.swift in Sources */,
+				320685812B3B3342005BBED6 /* NoAnimationButtonStyle.swift in Sources */,
+				3206857D2B3B3306005BBED6 /* GuessDifficultyView.swift in Sources */,
+				32A5BB2B2BE29D5700864723 /* InfoView.swift in Sources */,
+				3206857A2B389481005BBED6 /* ChooseGameView.swift in Sources */,
+				3206858C2B3B3477005BBED6 /* Game.swift in Sources */,
+				32A5BB292BE29D3D00864723 /* InfoButton.swift in Sources */,
+				320685862B3B33C0005BBED6 /* MenuButton.swift in Sources */,
 				3206856C2B389444005BBED6 /* RGBHunterApp.swift in Sources */,
+				320685842B3B3390005BBED6 /* BackButton.swift in Sources */,
+				3206857F2B3B3320005BBED6 /* OtherView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,11 +331,13 @@
 				DEVELOPMENT_TEAM = B44X659XPQ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "RGB Hunter";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.games";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -287,9 +345,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = rgago.RGBHunter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -304,11 +365,13 @@
 				DEVELOPMENT_TEAM = B44X659XPQ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "RGB Hunter";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.games";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -316,9 +379,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = rgago.RGBHunter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
