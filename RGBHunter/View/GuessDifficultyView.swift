@@ -17,6 +17,7 @@ struct ChooseDifficultyView: View {
               BackButton()
             }
             .buttonStyle(NoAnimationButtonStyle())
+            .padding(.top, 20)
             .padding(.leading, 20)
             Spacer()
           }
