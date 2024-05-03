@@ -8,7 +8,7 @@ struct ChooseGameView: View {
           .resizable()
           .edgesIgnoringSafeArea(.all)
           .opacity(0.7)
-        VStack {
+        VStack(spacing: 30) {
           Image(.title)
             .padding()
           VStack(spacing: 50.0) {

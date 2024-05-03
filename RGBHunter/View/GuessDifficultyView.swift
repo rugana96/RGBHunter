@@ -22,6 +22,8 @@ struct ChooseDifficultyView: View {
             Spacer()
           }
           Image(.title)
+            .resizable()
+            .frame(width: 300, height: 330)
             .padding(.bottom)
           VStack(spacing: 50.0) {
             NavigationLink {
@@ -45,3 +47,8 @@ struct ChooseDifficultyView: View {
     .navigationBarBackButtonHidden()
   }
 }
+
+#Preview {
+  ChooseDifficultyView()
+}
+

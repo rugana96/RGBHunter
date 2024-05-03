@@ -30,12 +30,11 @@ struct RGBGuessView: View {
             .font(.custom("Score", size: 80))
             .bold()
           Spacer()
-          HStack {
+          HStack(spacing: 70) {
             Circle()
               .stroke(.black, lineWidth: 5)
               .fill(viewModel.chosenColor)
               .frame(width: 130)
-            Spacer()
             if difficulty == .normal {
               Circle()
                 .stroke(Color.black, lineWidth: 5)

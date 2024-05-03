@@ -13,70 +13,77 @@ struct InfoView: View {
   @Environment(\.dismiss) var dismiss
   
   var body: some View {
-    ZStack {
+    VStack {
+      ZStack {
+        Text(infoTitle)
+          .bold()
+          .font(.title2)
+        HStack {
+          Button {
+            dismiss()
+          } label: {
+            Image(systemName: "xmark.circle")
+              .resizable()
+              .frame(width: 25, height: 25)
+              .foregroundStyle(.black)
+              .padding()
+          }
+          Spacer()
+        }
+      }
+      Divider()
+      ScrollView {
+        ZStack {
+          VStack {
+            Text(infoTextOne)
+              .padding()
+            Text(infoTextTwo)
+              .padding()
+            HStack {
+              Text("R")
+                .padding(5)
+                .bold()
+              Slider(value: $redSlider, in: 0...255)
+                .tint(Color.red)
+              Text(String(redSlider.tosRGB()))
+                .frame(width: 40)
+                .bold()
+            }
+            .padding()
+            Text(infoTextThree)
+              .padding()
+            Circle()
+              .stroke(.black, lineWidth: 2)
+              .fill(.green)
+              .frame(width: 35)
+              .overlay {
+                Image(systemName: "checkmark")
+                  .foregroundStyle(.white)
+              }
+            Text(infoTextFour)
+              .padding()
+            VStack(alignment: .leading) {
+              Text("* 0 - 99: Not even close.")
+              Text("* 100 - 199: Close, not there.")
+              Text("* 200 - 299: Really close.")
+              Text("* 300: Perfect score.")
+            }
+            VStack(alignment: .leading) {
+              Text("NOTE:")
+                .bold()
+              Text(infoTextDifficult)
+            }
+            .padding()
+          }
+        }
+      }
+    }
+    .background(
       Image(.background)
         .resizable()
         .edgesIgnoringSafeArea(.all)
         .opacity(0.2)
-      VStack {
-        ZStack {
-          Text(infoTitle)
-            .bold()
-            .font(.title2)
-          HStack {
-            Button {
-              dismiss()
-            } label: {
-              Image(systemName: "xmark.circle")
-                .resizable()
-                .frame(width: 25, height: 25)
-                .foregroundStyle(.black)
-                .padding()
-            }
-            Spacer()
-          }
-        }
-        Text(infoTextOne)
-          .padding()
-        Text(infoTextTwo)
-          .padding()
-        HStack {
-          Text("R")
-            .padding(5)
-            .bold()
-          Slider(value: $redSlider, in: 0...255)
-            .tint(Color.red)
-          Text(String(redSlider.tosRGB()))
-            .frame(width: 40)
-            .bold()
-        }
-        .padding()
-        Text(infoTextThree)
-          .padding()
-        Circle()
-          .stroke(.black, lineWidth: 2)
-          .fill(.green)
-          .frame(width: 35)
-          .overlay {
-            Image(systemName: "checkmark")
-              .foregroundStyle(.white)
-          }
-        Text(infoTextFour)
-          .padding()
-        VStack(alignment: .leading) {
-          Text("* 0 - 99: Not even close.")
-          Text("* 100 - 199: Close, not there.")
-          Text("* 200 - 299: Really close.")
-          Text("* 300: Perfect score.")
-        }
-        VStack(alignment: .leading) {
-          Text("NOTE:")
-            .bold()
-          Text(infoTextDifficult)
-        }
-        .padding()
-      }
-    }
+    )
   }
 }
 
