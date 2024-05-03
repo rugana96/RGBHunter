@@ -30,21 +30,41 @@ extension RGBGuessView {
       )
     }
     
+    var difficulty: Difficulty
+    
     var randomColor: Color = .blue
     var victoryText: String = ""
     
     var pointsScored: Int = 0
     var totalPoints: Int = 0
     
-    init() {
+    let R: String = "R"
+    let G: String = "G"
+    let B: String = "B"
+    let okButtonText: String = "OK"
+    let checkmarkImageSystemName: String = "checkmark"
+    let secondsToDissapear: Double = 5
+    
+    var sliderPadding: CGFloat {
+      isDifficultyNormal ? .zero : UILayouts.RGBGuessView.sliderPadding
+    }
+    
+    init(
+      difficulty: Difficulty
+    ) {
+      self.difficulty = difficulty
       self.generateRandomColor()
+    }
+  
+    var isDifficultyNormal: Bool {
+      difficulty == .normal
     }
     
     func update(isCircleVisible: Bool) {
       self.isCircleVisible = isCircleVisible
     }
     
-    func generateRandomColor() {
+    private func generateRandomColor() {
       randomColorRed = Double.random(in: 0...1).round(to: 2)
       randomColorGreen = Double.random(in: 0...1).round(to: 2)
       randomColorBlue = Double.random(in: 0...1).round(to: 2)
@@ -83,7 +103,7 @@ extension RGBGuessView {
       return max(0, min(100, rawScore))
     }
     
-    func resetChosenColor() {
+    private func resetChosenColor() {
       redSlider = .zero
       greenSlider = .zero
       blueSlider = .zero

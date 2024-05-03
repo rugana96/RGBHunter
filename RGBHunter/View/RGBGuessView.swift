@@ -1,17 +1,22 @@
 import SwiftUI
 
 struct RGBGuessView: View {
-  @StateObject var viewModel: RGBGuessView.ViewModel = RGBGuessView.ViewModel()
+  @StateObject private var viewModel: RGBGuessView.ViewModel
   @State private var showingAlert = false
-  let difficulty: Difficulty
-  @Environment(\.dismiss) var dismiss
+  @Environment(\.dismiss) private var dismiss
+  
+  public init (
+    difficulty: Difficulty
+  ) {
+    _viewModel = StateObject(wrappedValue: RGBGuessView.ViewModel(difficulty: difficulty))
+  }
   
   var body: some View {
     ZStack {
       Image(.background)
         .resizable()
         .edgesIgnoringSafeArea(.all)
-        .opacity(0.3)
+        .opacity(UILayouts.RGBGuessView.backgroundOpacity)
       VStack {
         HStack {
           Button {
@@ -20,7 +25,7 @@ struct RGBGuessView: View {
             BackButton()
           }
           .buttonStyle(NoAnimationButtonStyle())
-          .padding(.leading, 20)
+          .padding(.leading, UILayouts.RGBGuessView.backButtonLeadingPadding)
           Spacer()
           InfoButton()
         }
@@ -30,24 +35,24 @@ struct RGBGuessView: View {
             .font(.custom("Score", size: 80))
             .bold()
           Spacer()
-          HStack(spacing: 70) {
+          HStack(spacing: UILayouts.RGBGuessView.circleHStackSpacing) {
             Circle()
-              .stroke(.black, lineWidth: 5)
+              .stroke(.black, lineWidth: UILayouts.RGBGuessView.circleStrokeLineWidth)
               .fill(viewModel.chosenColor)
-              .frame(width: 130)
-            if difficulty == .normal {
+              .frame(width: UILayouts.RGBGuessView.circleFrameWidth)
+            if viewModel.isDifficultyNormal {
               Circle()
-                .stroke(Color.black, lineWidth: 5)
+                .stroke(Color.black, lineWidth: UILayouts.RGBGuessView.circleStrokeLineWidth)
                 .fill(viewModel.randomColor)
-                .frame(width: 130)
+                .frame(width: UILayouts.RGBGuessView.circleFrameWidth)
             } else {
               if viewModel.isCircleVisible {
                 Circle()
-                  .stroke(Color.black, lineWidth: 5)
+                  .stroke(Color.black, lineWidth: UILayouts.RGBGuessView.circleStrokeLineWidth)
                   .fill(viewModel.randomColor)
-                  .frame(width: 130)
+                  .frame(width: UILayouts.RGBGuessView.circleFrameWidth)
                   .onAppear {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + viewModel.secondsToDissapear) {
                       withAnimation {
                         viewModel.update(isCircleVisible: false)
                       }
@@ -58,41 +63,47 @@ struct RGBGuessView: View {
           }
           .padding()
           Spacer()
-          VStack(spacing: 30) {
+          VStack(spacing: UILayouts.RGBGuessView.sliderVStackSpacing) {
             HStack {
-              Text("R")
-                .padding(5)
+              Text(viewModel.R)
+                .padding(UILayouts.RGBGuessView.sliderTextPadding)
                 .bold()
-              Slider(value: $viewModel.redSlider, in: 0...255)
+              Slider(value: $viewModel.redSlider, in: UILayouts.RGBGuessView.sliderRange)
                 .tint(Color.red)
-              Text(String(viewModel.redSlider.tosRGB()))
-                .frame(width: 40)
-                .bold()
-                .opacity(difficulty == .normal ? 1 : 0)
+                .padding(viewModel.sliderPadding)
+              if viewModel.isDifficultyNormal {
+                Text(String(viewModel.redSlider.tosRGB()))
+                  .frame(width: UILayouts.RGBGuessView.checkFrameWidth)
+                  .bold()
+              }
             }
             .padding()
             HStack {
-              Text("G")
+              Text(viewModel.G)
                 .bold()
-                .padding(5)
-              Slider(value: $viewModel.greenSlider, in: 0...255)
+                .padding(UILayouts.RGBGuessView.sliderTextPadding)
+              Slider(value: $viewModel.greenSlider, in: UILayouts.RGBGuessView.sliderRange)
                 .tint(Color.green)
-              Text(String(viewModel.greenSlider.tosRGB()))
-                .frame(width: 40)
-                .bold()
-                .opacity(difficulty == .normal ? 1 : 0)
+                .padding(viewModel.sliderPadding)
+              if viewModel.isDifficultyNormal {
+                Text(String(viewModel.redSlider.tosRGB()))
+                  .frame(width: UILayouts.RGBGuessView.checkFrameWidth)
+                  .bold()
+              }
             }
             .padding()
             HStack {
-              Text("B")
+              Text(viewModel.B)
                 .bold()
-                .padding(5)
-              Slider(value: $viewModel.blueSlider, in: 0...255)
+                .padding(UILayouts.RGBGuessView.sliderTextPadding)
+              Slider(value: $viewModel.blueSlider, in: UILayouts.RGBGuessView.sliderRange)
                 .tint(Color.blue)
-              Text(String(viewModel.blueSlider.tosRGB()))
-                .frame(width: 40)
-                .bold()
-                .opacity(difficulty == .normal ? 1 : 0)
+                .padding(viewModel.sliderPadding)
+              if viewModel.isDifficultyNormal {
+                Text(String(viewModel.redSlider.tosRGB()))
+                  .frame(width: UILayouts.RGBGuessView.checkFrameWidth)
+                  .bold()
+              }
             }
             .padding()
           }
@@ -102,17 +113,17 @@ struct RGBGuessView: View {
             showingAlert = true
           }, label: {
             Circle()
-              .stroke(.black, lineWidth: 2)
+              .stroke(.black, lineWidth: UILayouts.RGBGuessView.strokeLineWidth)
               .fill(.green)
-              .frame(width: 70)
+              .frame(width: UILayouts.RGBGuessView.checkFrameWidth)
               .overlay {
-                Image(systemName: "checkmark")
+                Image(systemName: viewModel.checkmarkImageSystemName)
                   .foregroundStyle(.white)
               }
           })
-          .padding(.bottom, 30)
+          .padding(.bottom, UILayouts.RGBGuessView.checkBottomPadding)
           .alert(Text(viewModel.victoryText), isPresented: $showingAlert) {
-            Button("OK", role: .cancel) {
+            Button(viewModel.okButtonText, role: .cancel) {
               viewModel.resetGame()
             }
           }
@@ -120,5 +131,23 @@ struct RGBGuessView: View {
       }
     }
     .navigationBarBackButtonHidden()
+  }
+}
+
+extension UILayouts {
+  enum RGBGuessView {
+    public static let sliderRange = 0.0...255.0
+    public static let sliderVStackSpacing = 30.0
+    public static let sliderTextFrameWidth = 40.0
+    public static let sliderTextPadding = 5.0
+    public static let sliderPadding = 10.0
+    public static let strokeLineWidth = 2.0
+    public static let checkFrameWidth = 70.0
+    public static let checkBottomPadding = 30.0
+    public static let backgroundOpacity = 0.3
+    public static let backButtonLeadingPadding = 20.0
+    public static let circleHStackSpacing = 70.0
+    public static let circleStrokeLineWidth = 5.0
+    public static let circleFrameWidth = 130.0
   }
 }

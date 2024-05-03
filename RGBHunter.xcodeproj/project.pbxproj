@@ -11,7 +11,7 @@
 		3206856E2B389444005BBED6 /* RGBGuessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3206856D2B389444005BBED6 /* RGBGuessView.swift */; };
 		320685702B389446005BBED6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3206856F2B389446005BBED6 /* Assets.xcassets */; };
 		3206857A2B389481005BBED6 /* ChooseGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320685792B389481005BBED6 /* ChooseGameView.swift */; };
-		3206857D2B3B3306005BBED6 /* GuessDifficultyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3206857C2B3B3306005BBED6 /* GuessDifficultyView.swift */; };
+		3206857D2B3B3306005BBED6 /* ChooseDifficultyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3206857C2B3B3306005BBED6 /* ChooseDifficultyView.swift */; };
 		3206857F2B3B3320005BBED6 /* OtherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3206857E2B3B3320005BBED6 /* OtherView.swift */; };
 		320685812B3B3342005BBED6 /* NoAnimationButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320685802B3B3342005BBED6 /* NoAnimationButtonStyle.swift */; };
 		320685842B3B3390005BBED6 /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320685832B3B3390005BBED6 /* BackButton.swift */; };
@@ -22,6 +22,7 @@
 		3206858E2B3B3550005BBED6 /* Double+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3206858D2B3B3550005BBED6 /* Double+Extensions.swift */; };
 		32A5BB292BE29D3D00864723 /* InfoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A5BB282BE29D3D00864723 /* InfoButton.swift */; };
 		32A5BB2B2BE29D5700864723 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A5BB2A2BE29D5700864723 /* InfoView.swift */; };
+		32D4B4D82BE4E18F00031CB5 /* UILayouts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D4B4D72BE4E18F00031CB5 /* UILayouts.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,7 +31,7 @@
 		3206856D2B389444005BBED6 /* RGBGuessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RGBGuessView.swift; sourceTree = "<group>"; };
 		3206856F2B389446005BBED6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		320685792B389481005BBED6 /* ChooseGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseGameView.swift; sourceTree = "<group>"; };
-		3206857C2B3B3306005BBED6 /* GuessDifficultyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuessDifficultyView.swift; sourceTree = "<group>"; };
+		3206857C2B3B3306005BBED6 /* ChooseDifficultyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseDifficultyView.swift; sourceTree = "<group>"; };
 		3206857E2B3B3320005BBED6 /* OtherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherView.swift; sourceTree = "<group>"; };
 		320685802B3B3342005BBED6 /* NoAnimationButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoAnimationButtonStyle.swift; sourceTree = "<group>"; };
 		320685832B3B3390005BBED6 /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
@@ -41,6 +42,7 @@
 		3206858D2B3B3550005BBED6 /* Double+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extensions.swift"; sourceTree = "<group>"; };
 		32A5BB282BE29D3D00864723 /* InfoButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoButton.swift; sourceTree = "<group>"; };
 		32A5BB2A2BE29D5700864723 /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
+		32D4B4D72BE4E18F00031CB5 /* UILayouts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILayouts.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,7 +90,7 @@
 				320685792B389481005BBED6 /* ChooseGameView.swift */,
 				3206856D2B389444005BBED6 /* RGBGuessView.swift */,
 				3206857E2B3B3320005BBED6 /* OtherView.swift */,
-				3206857C2B3B3306005BBED6 /* GuessDifficultyView.swift */,
+				3206857C2B3B3306005BBED6 /* ChooseDifficultyView.swift */,
 				320685802B3B3342005BBED6 /* NoAnimationButtonStyle.swift */,
 				320685832B3B3390005BBED6 /* BackButton.swift */,
 				320685852B3B33C0005BBED6 /* MenuButton.swift */,
@@ -102,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				3206858D2B3B3550005BBED6 /* Double+Extensions.swift */,
+				32D4B4D72BE4E18F00031CB5 /* UILayouts.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -190,7 +193,7 @@
 				3206856E2B389444005BBED6 /* RGBGuessView.swift in Sources */,
 				3206858A2B3B3469005BBED6 /* Difficulty.swift in Sources */,
 				320685812B3B3342005BBED6 /* NoAnimationButtonStyle.swift in Sources */,
-				3206857D2B3B3306005BBED6 /* GuessDifficultyView.swift in Sources */,
+				3206857D2B3B3306005BBED6 /* ChooseDifficultyView.swift in Sources */,
 				32A5BB2B2BE29D5700864723 /* InfoView.swift in Sources */,
 				3206857A2B389481005BBED6 /* ChooseGameView.swift in Sources */,
 				3206858C2B3B3477005BBED6 /* Game.swift in Sources */,
@@ -199,6 +202,7 @@
 				3206856C2B389444005BBED6 /* RGBHunterApp.swift in Sources */,
 				320685842B3B3390005BBED6 /* BackButton.swift in Sources */,
 				3206857F2B3B3320005BBED6 /* OtherView.swift in Sources */,
+				32D4B4D82BE4E18F00031CB5 /* UILayouts.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
