@@ -2,7 +2,6 @@ import SwiftUI
 
 struct RGBGuessView: View {
   @StateObject private var viewModel: RGBGuessView.ViewModel
-  @State private var showingAlert = false
   @Environment(\.dismiss) private var dismiss
   
   public init (
@@ -31,9 +30,19 @@ struct RGBGuessView: View {
         }
         Spacer()
         VStack {
-          Text(String(viewModel.totalPoints))
-            .font(.custom("Score", size: 80))
-            .bold()
+          VStack {
+            Text(String(viewModel.partialPoints))
+              .font(Fonts.score)
+              .bold()
+            if viewModel.totalPlays > .zero {
+              HStack {
+                Text(String(viewModel.avgPoints))
+                  .font(.title)
+                  .bold()
+                Text(viewModel.avgPointsText)
+              }
+            }
+          }
           Spacer()
           HStack(spacing: UILayouts.RGBGuessView.circleHStackSpacing) {
             Circle()
@@ -47,17 +56,27 @@ struct RGBGuessView: View {
                 .frame(width: UILayouts.RGBGuessView.circleFrameWidth)
             } else {
               if viewModel.isCircleVisible {
-                Circle()
-                  .stroke(Color.black, lineWidth: UILayouts.RGBGuessView.circleStrokeLineWidth)
-                  .fill(viewModel.randomColor)
-                  .frame(width: UILayouts.RGBGuessView.circleFrameWidth)
-                  .onAppear {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + viewModel.secondsToDissapear) {
+                ZStack {
+                  Circle()
+                    .stroke(Color.black, lineWidth: UILayouts.RGBGuessView.circleStrokeLineWidth)
+                    .fill(viewModel.randomColor)
+                    .frame(width: UILayouts.RGBGuessView.circleFrameWidth)
+                  Text("\(viewModel.countdown)")
+                    .font(.title)
+                    .foregroundColor(.white)
+                }
+                .onAppear {
+                  Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
+                    if viewModel.countdown > 0 {
+                      viewModel.countdown -= 1
+                    } else {
+                      timer.invalidate()
                       withAnimation {
                         viewModel.update(isCircleVisible: false)
                       }
                     }
                   }
+                }
               }
             }
           }
@@ -70,7 +89,7 @@ struct RGBGuessView: View {
                 .bold()
               Slider(value: $viewModel.redSlider, in: UILayouts.RGBGuessView.sliderRange)
                 .tint(Color.red)
-                .padding(viewModel.sliderPadding)
+                .padding(.trailing, viewModel.sliderPadding)
               if viewModel.isDifficultyNormal {
                 Text(String(viewModel.redSlider.tosRGB()))
                   .frame(width: UILayouts.RGBGuessView.checkFrameWidth)
@@ -84,7 +103,7 @@ struct RGBGuessView: View {
                 .padding(UILayouts.RGBGuessView.sliderTextPadding)
               Slider(value: $viewModel.greenSlider, in: UILayouts.RGBGuessView.sliderRange)
                 .tint(Color.green)
-                .padding(viewModel.sliderPadding)
+                .padding(.trailing, viewModel.sliderPadding)
               if viewModel.isDifficultyNormal {
                 Text(String(viewModel.redSlider.tosRGB()))
                   .frame(width: UILayouts.RGBGuessView.checkFrameWidth)
@@ -98,7 +117,7 @@ struct RGBGuessView: View {
                 .padding(UILayouts.RGBGuessView.sliderTextPadding)
               Slider(value: $viewModel.blueSlider, in: UILayouts.RGBGuessView.sliderRange)
                 .tint(Color.blue)
-                .padding(viewModel.sliderPadding)
+                .padding(.trailing, viewModel.sliderPadding)
               if viewModel.isDifficultyNormal {
                 Text(String(viewModel.redSlider.tosRGB()))
                   .frame(width: UILayouts.RGBGuessView.checkFrameWidth)
@@ -110,7 +129,7 @@ struct RGBGuessView: View {
           Spacer()
           Button(action: {
             viewModel.calculateScore()
-            showingAlert = true
+            viewModel.showingAlert = true
           }, label: {
             Circle()
               .stroke(.black, lineWidth: UILayouts.RGBGuessView.strokeLineWidth)
@@ -122,7 +141,7 @@ struct RGBGuessView: View {
               }
           })
           .padding(.bottom, UILayouts.RGBGuessView.checkBottomPadding)
-          .alert(Text(viewModel.victoryText), isPresented: $showingAlert) {
+          .alert(Text(viewModel.victoryText), isPresented: $viewModel.showingAlert) {
             Button(viewModel.okButtonText, role: .cancel) {
               viewModel.resetGame()
             }
@@ -134,13 +153,17 @@ struct RGBGuessView: View {
   }
 }
 
+#Preview {
+  RGBGuessView(difficulty: .difficult)
+}
+
 extension UILayouts {
   enum RGBGuessView {
     public static let sliderRange = 0.0...255.0
     public static let sliderVStackSpacing = 30.0
     public static let sliderTextFrameWidth = 40.0
     public static let sliderTextPadding = 5.0
-    public static let sliderPadding = 10.0
+    public static let sliderPadding = 20.0
     public static let strokeLineWidth = 2.0
     public static let checkFrameWidth = 70.0
     public static let checkBottomPadding = 30.0
@@ -150,4 +173,8 @@ extension UILayouts {
     public static let circleStrokeLineWidth = 5.0
     public static let circleFrameWidth = 130.0
   }
+}
+
+enum Fonts {
+  public static let score: Font = .custom("Score", size: 80)
 }

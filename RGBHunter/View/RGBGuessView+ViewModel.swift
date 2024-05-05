@@ -12,6 +12,8 @@ extension RGBGuessView {
     
     @Published var isCircleVisible = true
     
+    @Published var showingAlert = false
+    
     var chosenColorRed: Double {
       redSlider.tosRGB()
     }
@@ -35,8 +37,13 @@ extension RGBGuessView {
     var randomColor: Color = .blue
     var victoryText: String = ""
     
+    @Published var countdown = 5
+    
     var pointsScored: Int = 0
     var totalPoints: Int = 0
+    var partialPoints: Int = 0
+    var avgPoints: Int = 0
+    var totalPlays: Int = 0
     
     let R: String = "R"
     let G: String = "G"
@@ -44,6 +51,14 @@ extension RGBGuessView {
     let okButtonText: String = "OK"
     let checkmarkImageSystemName: String = "checkmark"
     let secondsToDissapear: Double = 5
+    
+    var avgPointsText: String {
+      if totalPlays == 1 {
+        "in \(totalPlays) game"
+      } else {
+        "in \(totalPlays) games"
+      }
+    }
     
     var sliderPadding: CGFloat {
       isDifficultyNormal ? .zero : UILayouts.RGBGuessView.sliderPadding
@@ -55,7 +70,7 @@ extension RGBGuessView {
       self.difficulty = difficulty
       self.generateRandomColor()
     }
-  
+    
     var isDifficultyNormal: Bool {
       difficulty == .normal
     }
@@ -72,18 +87,22 @@ extension RGBGuessView {
     }
     
     func calculateScore() {
-      let maxDistanceFromMidpoint = 0.5
+      let maxScorePerColor = 100.0
+      
       let deltaRed = abs(chosenColorRed - randomColorRed)
       let deltaGreen = abs(chosenColorGreen - randomColorGreen)
       let deltaBlue = abs(chosenColorBlue - randomColorBlue)
-
-      let redScore = calculateIndividualScore(delta: deltaRed, maxDistance: maxDistanceFromMidpoint)
-      let blueScore = calculateIndividualScore(delta: deltaBlue, maxDistance: maxDistanceFromMidpoint)
-      let greenScore = calculateIndividualScore(delta: deltaGreen, maxDistance: maxDistanceFromMidpoint)
-
-      pointsScored = Int(redScore + blueScore + greenScore)
+      
+      let redScore = max(0, maxScorePerColor - (deltaRed * maxScorePerColor))
+      let greenScore = max(0, maxScorePerColor - (deltaGreen * maxScorePerColor))
+      let blueScore = max(0, maxScorePerColor - (deltaBlue * maxScorePerColor))
+      
+      pointsScored = Int(redScore + greenScore + blueScore)
       totalPoints += pointsScored
-
+      partialPoints = pointsScored
+      totalPlays += 1
+      avgPoints = totalPoints / totalPlays
+      
       switch pointsScored {
       case 0..<100:
         victoryText = "Sorry, try again next time."
@@ -96,11 +115,6 @@ extension RGBGuessView {
       default:
         victoryText = "Close, but not quite there."
       }
-    }
-
-    private func calculateIndividualScore(delta: Double, maxDistance: Double) -> Double {
-      let rawScore = 100.0 * (1.0 - delta / maxDistance)
-      return max(0, min(100, rawScore))
     }
     
     private func resetChosenColor() {
@@ -115,6 +129,7 @@ extension RGBGuessView {
       pointsScored = 0
       resetChosenColor()
       update(isCircleVisible: true)
+      countdown = 5
     }
   }
 }
