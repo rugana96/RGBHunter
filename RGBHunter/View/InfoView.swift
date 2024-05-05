@@ -94,18 +94,18 @@ extension UILayouts {
 extension InfoView {
   @Observable final class ViewModel {
     var redSlider: Double = .zero
-    let infoTitle: String = "How to play"
-    let infoTextOne: String = "A random color will appear in the circle on the right."
-    let infoTextTwo: String = "You will have to move the sliders to get the same color in the circle on the right."
-    let infoTextThree: String = "Once you think you have it press the green button to submit your values."
-    let infoTextFour: String = "Depending on how far you are from the random color you will get a score:"
-    let infoTextDifficult: String = "In difficult mode you will only have 5 seconds to see the random color. No slider feedback will be shown."
-    let R: String = "R"
-    let scoreOne: String = "* 0 - 99: Not even close."
-    let scoreTwo: String = "* 100 - 199: Close, not there."
-    let scoreThree: String = "* 200 - 299: Really close."
-    let scorteFour: String = "* 300: Perfect score."
-    let note: String = "NOTE:"
+    let infoTitle: String = String(localized: "infoTitle")
+    let infoTextOne: String = String(localized: "infoTextOne")
+    let infoTextTwo: String = String(localized: "infoTextTwo")
+    let infoTextThree: String = String(localized: "infoTextThree")
+    let infoTextFour: String = String(localized: "infoTextFour")
+    let infoTextDifficult: String = String(localized: "infoTextDifficult")
+    let R: String = String(localized: "R")
+    let scoreOne: String = String(localized: "scoreOne")
+    let scoreTwo: String = String(localized: "scoreTwo")
+    let scoreThree: String = String(localized: "scoreThree")
+    let scorteFour: String = String(localized: "scoreFour")
+    let note: String = String(localized: "scoreNote")
     let checkMarkImageSystemName: String = "checkmark"
     let closeImageSystemName: String = "xmark.circle"
   }

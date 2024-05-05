@@ -63,8 +63,8 @@ extension UILayouts {
 
 extension ChooseDifficultyView {
   final class ViewModel {
-    let normalDifficultyText: String = "Normal"
-    let difficultDifficultyText: String = "Difficult"
+    let normalDifficultyText: String = String(localized: "normal")
+    let difficultDifficultyText: String = String(localized: "difficult")
   }
 }
 

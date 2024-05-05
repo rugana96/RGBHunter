@@ -23,6 +23,7 @@
 		32A5BB292BE29D3D00864723 /* InfoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A5BB282BE29D3D00864723 /* InfoButton.swift */; };
 		32A5BB2B2BE29D5700864723 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A5BB2A2BE29D5700864723 /* InfoView.swift */; };
 		32D4B4D82BE4E18F00031CB5 /* UILayouts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D4B4D72BE4E18F00031CB5 /* UILayouts.swift */; };
+		32E5FE6F2BE79207006211A1 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 32E5FE6E2BE79207006211A1 /* Localizable.xcstrings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +44,7 @@
 		32A5BB282BE29D3D00864723 /* InfoButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoButton.swift; sourceTree = "<group>"; };
 		32A5BB2A2BE29D5700864723 /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 		32D4B4D72BE4E18F00031CB5 /* UILayouts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILayouts.swift; sourceTree = "<group>"; };
+		32E5FE6E2BE79207006211A1 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 				32D4B4D32BE4DA1F00031CB5 /* Core */,
 				32D4B4D22BE4DA0B00031CB5 /* Utils */,
 				320685822B3B3360005BBED6 /* View */,
+				32E5FE6E2BE79207006211A1 /* Localizable.xcstrings */,
 			);
 			path = RGBHunter;
 			sourceTree = "<group>";
@@ -161,6 +164,7 @@
 			knownRegions = (
 				en,
 				Base,
+				es,
 			);
 			mainGroup = 3206855F2B389444005BBED6;
 			productRefGroup = 320685692B389444005BBED6 /* Products */;
@@ -177,6 +181,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				32E5FE6F2BE79207006211A1 /* Localizable.xcstrings in Resources */,
 				320685702B389446005BBED6 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -355,7 +360,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = rgago.RGBHunter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -393,7 +398,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = rgago.RGBHunter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

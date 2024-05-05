@@ -45,19 +45,15 @@ extension RGBGuessView {
     var avgPoints: Int = 0
     var totalPlays: Int = 0
     
-    let R: String = "R"
-    let G: String = "G"
-    let B: String = "B"
-    let okButtonText: String = "OK"
+    let R: String = String(localized: "R")
+    let G: String = String(localized: "G")
+    let B: String = String(localized: "B")
+    let okButtonText: String = String(localized: "OK")
     let checkmarkImageSystemName: String = "checkmark"
     let secondsToDissapear: Double = 5
     
     var avgPointsText: String {
-      if totalPlays == 1 {
-        "in \(totalPlays) game"
-      } else {
-        "in \(totalPlays) games"
-      }
+      String(localized: "\(totalPlays) avgGamesText")
     }
     
     var sliderPadding: CGFloat {
@@ -105,15 +101,15 @@ extension RGBGuessView {
       
       switch pointsScored {
       case 0..<100:
-        victoryText = "Sorry, try again next time."
+        victoryText = String(localized: "victoryTextOne")
       case 100..<200:
-        victoryText = "Close, but not quite there."
+        victoryText = String(localized: "victoryTextTwo")
       case 200..<299:
-        victoryText = "Great job! You're really close!"
+        victoryText = String(localized: "victoryTextThree")
       case 300:
-        victoryText = "That was perfect! You have a really good eye!"
+        victoryText = String(localized: "victoryTextFour")
       default:
-        victoryText = "Close, but not quite there."
+        victoryText = String(localized: "victoryTextTwo")
       }
     }
     

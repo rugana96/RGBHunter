@@ -44,7 +44,7 @@ extension UILayouts {
 
 extension ChooseGameView {
   final class ViewModel {
-    let guessTheColorGameText: String = "Guess the color"
-    let otherGameText: String = "Other game (Soon!)"
+    let guessTheColorGameText: String = String(localized: "guessTheColorGameText")
+    let otherGameText: String = String(localized: "otherGameText")
   }
 }
