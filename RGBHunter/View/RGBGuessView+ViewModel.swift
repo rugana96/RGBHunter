@@ -56,6 +56,10 @@ extension RGBGuessView {
       String(localized: "\(totalPlays) avgGamesText")
     }
     
+    var shouldShowAverageText: Double {
+      totalPlays > 0 ? 1 : 0
+    }
+    
     var sliderPadding: CGFloat {
       isDifficultyNormal ? .zero : UILayouts.RGBGuessView.sliderPadding
     }

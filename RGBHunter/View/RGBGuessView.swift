@@ -25,8 +25,10 @@ struct RGBGuessView: View {
           }
           .buttonStyle(NoAnimationButtonStyle())
           .padding(.leading, UILayouts.RGBGuessView.backButtonLeadingPadding)
+          .padding(.top, UILayouts.RGBGuessView.navigationItemsTopPadding)
           Spacer()
           InfoButton()
+            .padding(.top, UILayouts.RGBGuessView.navigationItemsTopPadding)
         }
         Spacer()
         VStack {
@@ -34,33 +36,32 @@ struct RGBGuessView: View {
             Text(String(viewModel.partialPoints))
               .font(Fonts.score)
               .bold()
-            if viewModel.totalPlays > .zero {
-              HStack {
-                Text(String(viewModel.avgPoints))
-                  .font(.title)
-                  .bold()
-                Text(viewModel.avgPointsText)
-              }
+            HStack {
+              Text(String(viewModel.avgPoints))
+                .font(.title)
+                .bold()
+              Text(viewModel.avgPointsText)
             }
+            .opacity(viewModel.shouldShowAverageText)
           }
           Spacer()
           HStack(spacing: UILayouts.RGBGuessView.circleHStackSpacing) {
             Circle()
               .stroke(.black, lineWidth: UILayouts.RGBGuessView.circleStrokeLineWidth)
               .fill(viewModel.chosenColor)
-              .frame(width: UILayouts.RGBGuessView.circleFrameWidth)
+              .frame(minWidth: UILayouts.RGBGuessView.circleMinFrameWidth, minHeight: UILayouts.RGBGuessView.circleMinFrameWidth)
             if viewModel.isDifficultyNormal {
               Circle()
                 .stroke(Color.black, lineWidth: UILayouts.RGBGuessView.circleStrokeLineWidth)
                 .fill(viewModel.randomColor)
-                .frame(width: UILayouts.RGBGuessView.circleFrameWidth)
+                .frame(minWidth: UILayouts.RGBGuessView.circleMinFrameWidth, minHeight: UILayouts.RGBGuessView.circleMinFrameWidth)
             } else {
               if viewModel.isCircleVisible {
                 ZStack {
                   Circle()
                     .stroke(Color.black, lineWidth: UILayouts.RGBGuessView.circleStrokeLineWidth)
                     .fill(viewModel.randomColor)
-                    .frame(width: UILayouts.RGBGuessView.circleFrameWidth)
+                    .frame(minWidth: UILayouts.RGBGuessView.circleMinFrameWidth, minHeight: UILayouts.RGBGuessView.circleMinFrameWidth)
                   Text("\(viewModel.countdown)")
                     .font(.title)
                     .foregroundColor(.white)
@@ -87,41 +88,52 @@ struct RGBGuessView: View {
               Text(viewModel.R)
                 .padding(UILayouts.RGBGuessView.sliderTextPadding)
                 .bold()
+                .fixedSize()
               Slider(value: $viewModel.redSlider, in: UILayouts.RGBGuessView.sliderRange)
                 .tint(Color.red)
                 .padding(.trailing, viewModel.sliderPadding)
+                .fixedSize(horizontal: false, vertical: true)
               if viewModel.isDifficultyNormal {
                 Text(String(viewModel.redSlider.tosRGB()))
-                  .frame(width: UILayouts.RGBGuessView.checkFrameWidth)
+                  .frame(width: UILayouts.RGBGuessView.sliderTextFrameWidth)
                   .bold()
+                  .fixedSize()
               }
             }
             .padding()
+            
             HStack {
               Text(viewModel.G)
-                .bold()
                 .padding(UILayouts.RGBGuessView.sliderTextPadding)
+                .bold()
+                .fixedSize()
               Slider(value: $viewModel.greenSlider, in: UILayouts.RGBGuessView.sliderRange)
                 .tint(Color.green)
                 .padding(.trailing, viewModel.sliderPadding)
+                .fixedSize(horizontal: false, vertical: true)
               if viewModel.isDifficultyNormal {
-                Text(String(viewModel.redSlider.tosRGB()))
-                  .frame(width: UILayouts.RGBGuessView.checkFrameWidth)
+                Text(String(viewModel.greenSlider.tosRGB()))
+                  .frame(width: UILayouts.RGBGuessView.sliderTextFrameWidth)
                   .bold()
+                  .fixedSize()
               }
             }
             .padding()
+            
             HStack {
               Text(viewModel.B)
                 .bold()
                 .padding(UILayouts.RGBGuessView.sliderTextPadding)
+                .fixedSize()
               Slider(value: $viewModel.blueSlider, in: UILayouts.RGBGuessView.sliderRange)
                 .tint(Color.blue)
                 .padding(.trailing, viewModel.sliderPadding)
+                .fixedSize(horizontal: false, vertical: true)
               if viewModel.isDifficultyNormal {
-                Text(String(viewModel.redSlider.tosRGB()))
-                  .frame(width: UILayouts.RGBGuessView.checkFrameWidth)
+                Text(String(viewModel.blueSlider.tosRGB()))
+                  .frame(width: UILayouts.RGBGuessView.sliderTextFrameWidth)
                   .bold()
+                  .fixedSize()
               }
             }
             .padding()
@@ -134,7 +146,12 @@ struct RGBGuessView: View {
             Circle()
               .stroke(.black, lineWidth: UILayouts.RGBGuessView.strokeLineWidth)
               .fill(.green)
-              .frame(width: UILayouts.RGBGuessView.checkFrameWidth)
+              .frame(
+                minWidth: UILayouts.RGBGuessView.checkMinFrameWidth,
+                maxWidth: UILayouts.RGBGuessView.checkMaxFrameWidth,
+                minHeight: UILayouts.RGBGuessView.checkMinFrameWidth,
+                maxHeight: UILayouts.RGBGuessView.checkMaxFrameWidth
+              )
               .overlay {
                 Image(systemName: viewModel.checkmarkImageSystemName)
                   .foregroundStyle(.white)
@@ -154,24 +171,31 @@ struct RGBGuessView: View {
 }
 
 #Preview {
+  RGBGuessView(difficulty: .normal)
+}
+
+#Preview {
   RGBGuessView(difficulty: .difficult)
 }
 
 extension UILayouts {
   enum RGBGuessView {
     public static let sliderRange = 0.0...255.0
-    public static let sliderVStackSpacing = 30.0
+    public static let sliderVStackSpacing = 20.0
     public static let sliderTextFrameWidth = 40.0
     public static let sliderTextPadding = 5.0
     public static let sliderPadding = 20.0
     public static let strokeLineWidth = 2.0
-    public static let checkFrameWidth = 70.0
-    public static let checkBottomPadding = 30.0
+    public static let checkMinFrameWidth = 50.0
+    public static let checkMaxFrameWidth = 70.0
+    public static let checkBottomPadding = 50.0
     public static let backgroundOpacity = 0.3
     public static let backButtonLeadingPadding = 20.0
     public static let circleHStackSpacing = 70.0
     public static let circleStrokeLineWidth = 5.0
-    public static let circleFrameWidth = 130.0
+    public static let circleMinFrameWidth = 100.0
+    public static let navigationItemsTopPadding = 20.0
+    public static let minimunScaleFactor = 20.0
   }
 }
 
